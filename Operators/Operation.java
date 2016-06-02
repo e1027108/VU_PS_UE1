@@ -19,7 +19,8 @@ public abstract class Operation {
 		this.stack = stack;
 	}
 	
-	public abstract void executeOperation(); //useful?
+	//throws different exceptions for different Operators
+	public abstract void executeOperation() /*throws Exception*/;//TODO activate exception throw
 	
 	//TODO later: recursive method for blocks?
 }

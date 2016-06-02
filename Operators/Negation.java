@@ -13,7 +13,7 @@ public class Negation extends Operation {
 			stack.push(String.valueOf(n));
 		}
 		else {
-			//throw exception -> not an integer
+			//TODO: throw exception -> not an integer (UnexpectedBlockException?)
 		}
 				
 	}

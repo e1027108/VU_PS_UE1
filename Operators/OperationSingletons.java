@@ -12,6 +12,12 @@ public final class OperationSingletons {
 	private static Modulo moduloInstance;
 	private static And andInstance;
 	private static Or orInstance;
+	private static Apply applyInstance;
+	private static Copy copyInstance;
+	private static Negation negationInstance;
+	private static Read_block readBlockInstance;
+	private static Read_integer readIntegerInstance;
+	private static Delete deleteInstance;
 
 	private OperationSingletons() {}
 
@@ -94,5 +100,53 @@ public final class OperationSingletons {
 
 		return orInstance;
 	}
+	
+	public Operation getApplyInstance() {
+		if (applyInstance == null) {
+			applyInstance = new Apply(); 
+		}
 
+		return applyInstance;
+	}
+	
+	public Operation getCopyInstance() {
+		if (copyInstance == null) {
+			copyInstance = new Copy(); 
+		}
+
+		return copyInstance;
+	}
+	
+	public Operation getDeleteInstance() {
+		if (deleteInstance == null) {
+			deleteInstance = new Delete(); 
+		}
+
+		return deleteInstance;
+	}
+	
+	public Operation getNegationInstance() {
+		if (negationInstance == null) {
+			negationInstance = new Negation(); 
+		}
+
+		return negationInstance;
+	}
+	
+	public Operation readIntegerInstance() {
+		if (readIntegerInstance == null) {
+			readIntegerInstance = new Read_integer(); 
+		}
+
+		return readIntegerInstance;
+	}
+
+	public Operation readBlockInstance() {
+		if (readBlockInstance == null) {
+			readBlockInstance = new Read_block(); 
+		}
+
+		return readBlockInstance;
+	}
+	
 }

@@ -19,7 +19,7 @@ public class Copy extends Operation {
 			
 		}
 		else {
-			// throw exception -> no sufficient number of elements on stack
+			//TODO: throw exception -> no sufficient number of elements on stack
 		}
 		
 	}
