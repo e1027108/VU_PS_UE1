@@ -10,7 +10,7 @@ public class InvalidStreamContentException extends Exception{
 	 */
 	public InvalidStreamContentException(String message){
 		super("The stack can only contain numbers and operators! ([n]*[o]*)\n"
-				+ "Invalid input: " + message);
+				+ "Invalid input: " + message); //keep syntax description? fix it? ^^
 	}
 	
 }

@@ -1,10 +1,14 @@
 package Operators;
 
+import Exceptions.InvalidStackSizeException;
+
 public class Copy extends Operation {
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws InvalidStackSizeException {
 		String[] elements = new String[stack.size()];
+		int origSize = stack.size();
+		
 		if(stack.size() > 1) {			
 			
 			for(int i = stack.size()-1; i >= 0; i--) {
@@ -19,7 +23,7 @@ public class Copy extends Operation {
 			
 		}
 		else {
-			//TODO: throw exception -> no sufficient number of elements on stack
+			throw new InvalidStackSizeException("" + (origSize-stack.size())); //TODO test validity of message
 		}
 		
 	}

@@ -13,7 +13,11 @@ public class Main {
 				Calculator calc = new Calculator();
 				
 				calc.setInputStream("4 5~6c ~78 ~9cw");
-				calc.executeInput();		
+				try {
+					calc.executeInput();
+				} catch (Exception e) {
+					System.out.println(e.getMessage()); //TODO: set messages in Operations
+				}		
 				System.out.println(calc.getOutputStream());
 
 	}

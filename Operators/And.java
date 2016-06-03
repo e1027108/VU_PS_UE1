@@ -1,9 +1,13 @@
 package Operators;
 
+import Exceptions.InvalidStreamContentException;
+import Exceptions.NotATruthValueException;
+import Exceptions.UnexpectedBlockException;
+
 public class And extends Operation{
 
 	@Override
-	public void executeOperation(){
+	public void executeOperation() throws UnexpectedBlockException, NotATruthValueException{
 		String conjunct1, conjunct2;
 		String result = "";
 		
@@ -16,7 +20,18 @@ public class And extends Operation{
 			result = "1";
 		}
 		else if(!conjunct1.equals("0") && !conjunct2.equals("0")){
-			//TODO throw exception
+			if(conjunct1.length() > 1){
+				throw new UnexpectedBlockException(conjunct1);
+			}
+			else if(conjunct2.length() > 1){
+				throw new UnexpectedBlockException(conjunct2);
+			}
+			else if(!conjunct1.equals("0") && !conjunct1.equals("1")){
+				throw new NotATruthValueException(this.getClass().getName(), conjunct1);
+			}
+			else{
+				throw new NotATruthValueException(this.getClass().getName(), conjunct2);
+			}
 		}
 		else{
 			result = "0";

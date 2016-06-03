@@ -12,6 +12,10 @@ public class Division extends Operation {
 		divisor = Integer.parseInt(stack.pop());
 		dividend = Integer.parseInt(stack.pop());
 		
+		if(divisor == 0){
+			throw new ArithmeticException("Division by 0 not allowed!");
+		}
+		
 		stack.push(String.valueOf(dividend/divisor));
 
 	}

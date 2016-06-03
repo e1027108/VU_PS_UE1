@@ -20,7 +20,7 @@ public abstract class Operation {
 	}
 	
 	//throws different exceptions for different Operators
-	public abstract void executeOperation() /*throws Exception*/;//TODO activate exception throw
+	public abstract void executeOperation() throws Exception;
 	
 	//TODO later: recursive method for blocks?
 }

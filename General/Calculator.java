@@ -19,7 +19,7 @@ public class Calculator {
 		outputStream = "";
 	}
 	
-	public void executeInput(){
+	public void executeInput() throws Exception{ //TODO deal with exception in Main? or here?
 		//throws exception?
 		String number = "";
 		Operation o = null;

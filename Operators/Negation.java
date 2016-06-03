@@ -1,9 +1,11 @@
 package Operators;
 
+import Exceptions.UnexpectedBlockException;
+
 public class Negation extends Operation {
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws UnexpectedBlockException {
 		String s = stack.pop();
 		if(!s.contains("[")) {
 			int n = Integer.parseInt(s);
@@ -13,7 +15,7 @@ public class Negation extends Operation {
 			stack.push(String.valueOf(n));
 		}
 		else {
-			//TODO: throw exception -> not an integer (UnexpectedBlockException?)
+			throw new UnexpectedBlockException(s);
 		}
 				
 	}

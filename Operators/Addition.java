@@ -3,7 +3,7 @@ package Operators;
 public class Addition extends Operation{
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() {//no specific exception?
 		int summand1, summand2;
 		
 		//TODO if block do sth.

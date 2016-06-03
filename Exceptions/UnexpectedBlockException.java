@@ -9,7 +9,7 @@ public class UnexpectedBlockException extends Exception{
 	 * @param message the block that was not accepted
 	 */
 	public UnexpectedBlockException(String message){
-		super("The '&' and '|' operators do not accept block arguments!\n"
+		super("The operators '~', '&' and '|' do not accept block arguments!\n"
 				+ "Invalid block: " + message);
 	}
 

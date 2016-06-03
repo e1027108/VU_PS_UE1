@@ -7,17 +7,12 @@ import java.io.InputStreamReader;
 public class Read_block extends Operation{
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		String input = "";
-		try {
-			input = br.readLine();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		input = br.readLine();
 		input = "[" + input + "]";
 		stack.push(input);
 	}

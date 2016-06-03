@@ -1,11 +1,15 @@
 package Operators;
 
+import Exceptions.InvalidStackSizeException;
+
 public class Delete extends Operation {
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws InvalidStackSizeException {
 		stack.pop();
 		String[] elements = new String[stack.size()];
+		int origSize = stack.size();
+		
 		if(stack.size() > 0) {
 			
 			for(int i = stack.size()-1; i >= 0; i--) {
@@ -18,7 +22,7 @@ public class Delete extends Operation {
 			
 		}
 		else {
-			//TODO: throw exception -> no sufficient number of elements on stack
+			throw new InvalidStackSizeException("" + (origSize-stack.size())); //TODO test validity of message
 		}
 	}
 
