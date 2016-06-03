@@ -1,6 +1,5 @@
 package Operators;
 
-import Exceptions.InvalidStreamContentException;
 import Exceptions.NotATruthValueException;
 import Exceptions.UnexpectedBlockException;
 
