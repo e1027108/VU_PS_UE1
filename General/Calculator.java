@@ -3,9 +3,9 @@ package General;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import Operators.Copy;
-import Operators.Negation;
+import Exceptions.InvalidStreamContentException;
 import Operators.Operation;
+import Operators.OperationSingletons;
 
 public class Calculator {
 	
@@ -13,14 +13,16 @@ public class Calculator {
 	private String outputStream;
 	private Deque<String> stack;
 	
+	private OperationSingletons operationFactory;
+	
 	public Calculator(){
 		stack = new ArrayDeque<String>();
 		inputStream = "";
 		outputStream = "";
+		operationFactory = new OperationSingletons();
 	}
 	
 	public void executeInput() throws Exception{ //TODO deal with exception in Main? or here?
-		//throws exception?
 		String number = "";
 		Operation o = null;
 		for(int i = 0; i < inputStream.length(); i++){
@@ -34,13 +36,88 @@ public class Calculator {
 					number = "";
 				}
 				switch(c){
+					case ' ':
+						break;
+					case '+':
+						o = operationFactory.getAdditionInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '-':
+						//check negative sign
+						if(i < inputStream.length()-1){
+							if(Character.isDigit(inputStream.charAt(i+1))){
+								number += c;
+								break;
+							}
+						}
+						
+						o = operationFactory.getSubtractionInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '*':
+						o = operationFactory.getMultiplicationInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '/':
+						o = operationFactory.getDivisionInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '%':
+						o = operationFactory.getModuloInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '&':
+						o = operationFactory.getAndInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '|':
+						o = operationFactory.getOrInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '=':
+						o = operationFactory.getEqualsInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '<':
+						o = operationFactory.getLesserInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case '>':
+						o = operationFactory.getGreaterInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
 					case '~':
-						o = new Negation();
+						o = operationFactory.getNegationInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case 'b':
+						o = operationFactory.readBlockInstance();
 						o.setStack(stack);
 						o.executeOperation();
 						break;
 					case 'c':
-						o = new Copy();
+						o = operationFactory.getCopyInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case 'd':
+						o = operationFactory.getDeleteInstance();
+						o.setStack(stack);
+						o.executeOperation();
+						break;
+					case 'i':
+						o = operationFactory.readIntegerInstance();
 						o.setStack(stack);
 						o.executeOperation();
 						break;
@@ -49,6 +126,10 @@ public class Calculator {
 							outputStream += stack.pop() + '\n';							
 						}
 						break;
+					case 'x':
+						System.exit(0);
+					default:
+						throw new InvalidStreamContentException(String.valueOf(c));
 				}
 			}
 			

@@ -19,7 +19,7 @@ public final class OperationSingletons {
 	private static Read_integer readIntegerInstance;
 	private static Delete deleteInstance;
 
-	private OperationSingletons() {}
+	public OperationSingletons() {}
 
 	public Operation getAdditionInstance() {
 		if (additionInstance == null) {
