@@ -1,6 +1,6 @@
 package Operators;
 
-public final class OperationSingletons {
+public final class OperationFactory {
 
 	private static Addition additionInstance;
 	private static Subtraction subtractionInstance;
@@ -19,7 +19,7 @@ public final class OperationSingletons {
 	private static Read_integer readIntegerInstance;
 	private static Delete deleteInstance;
 
-	public OperationSingletons() {}
+	public OperationFactory() {}
 
 	public Operation getAdditionInstance() {
 		if (additionInstance == null) {

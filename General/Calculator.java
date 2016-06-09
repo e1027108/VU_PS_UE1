@@ -5,7 +5,7 @@ import java.util.Deque;
 
 import Exceptions.InvalidStreamContentException;
 import Operators.Operation;
-import Operators.OperationSingletons;
+import Operators.OperationFactory;
 
 public class Calculator {
 	
@@ -13,13 +13,13 @@ public class Calculator {
 	private String outputStream;
 	private Deque<String> stack;
 	
-	private OperationSingletons operationFactory;
+	private OperationFactory operationFactory;
 	
 	public Calculator(){
 		stack = new ArrayDeque<String>();
 		inputStream = "";
 		outputStream = "";
-		operationFactory = new OperationSingletons();
+		operationFactory = new OperationFactory();
 	}
 	
 	public void executeInput() throws Exception{ //TODO deal with exception in Main? or here?
