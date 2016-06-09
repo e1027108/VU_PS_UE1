@@ -1,16 +1,32 @@
 package Operators;
 
+import Exceptions.UnexpectedBlockException;
+
 public class Multiplication extends Operation {
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws UnexpectedBlockException {
 		int factor1, factor2;
-		
-		//TODO if block do sth.
-		
-		factor1 = Integer.parseInt(stack.pop());
-		factor2 = Integer.parseInt(stack.pop());
-		
+		String element1, element2;
+
+		element1 = stack.pop();
+		element2 = stack.pop();
+
+		try{
+			factor1 = Integer.parseInt(element1);
+			factor2 = Integer.parseInt(element2);
+		} catch (NumberFormatException e){
+			if(element1.contains("[")){
+				throw new UnexpectedBlockException(element1);
+			}
+			else if(element2.contains("[")){
+				throw new UnexpectedBlockException(element2);
+			}
+			else{
+				throw e;
+			}
+		}
+
 		stack.push(String.valueOf(factor1 * factor2));
 	}
 

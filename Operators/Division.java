@@ -1,21 +1,36 @@
 package Operators;
 
+import Exceptions.UnexpectedBlockException;
+
 public class Division extends Operation {
 
 	@Override
-	public void executeOperation() {
+	public void executeOperation() throws UnexpectedBlockException {
 		int divisor, dividend;
-		
-		//TODO if block do sth.
-		//TODO exception on Division by zero (ArithmeticException?)
-		
-		divisor = Integer.parseInt(stack.pop());
-		dividend = Integer.parseInt(stack.pop());
-		
+		String element1, element2;
+
+		element1 = stack.pop();
+		element2 = stack.pop();
+
+		try{
+			divisor = Integer.parseInt(element1);
+			dividend = Integer.parseInt(element2);
+		} catch (NumberFormatException e){
+			if(element1.contains("[")){
+				throw new UnexpectedBlockException(element1);
+			}
+			else if(element2.contains("[")){
+				throw new UnexpectedBlockException(element2);
+			}
+			else{
+				throw e;
+			}
+		}
+
 		if(divisor == 0){
 			throw new ArithmeticException("Division by 0 not allowed!");
 		}
-		
+
 		stack.push(String.valueOf(dividend/divisor));
 
 	}
