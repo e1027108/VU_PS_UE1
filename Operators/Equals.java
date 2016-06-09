@@ -6,8 +6,6 @@ public class Equals extends Operation{
 	public void executeOperation(){
 		String val1, val2, result;
 		
-		//TODO blocks
-		
 		val1 = stack.pop();
 		val2 = stack.pop();
 		
