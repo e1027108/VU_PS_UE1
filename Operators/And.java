@@ -1,16 +1,19 @@
 package Operators;
 
+import Exceptions.InvalidStackSizeException;
 import Exceptions.NotATruthValueException;
 import Exceptions.UnexpectedBlockException;
 
 public class And extends Operation{
 
 	@Override
-	public void executeOperation() throws UnexpectedBlockException, NotATruthValueException{
+	public void executeOperation() throws UnexpectedBlockException, NotATruthValueException, InvalidStackSizeException{
 		String conjunct1, conjunct2;
 		String result = "";
 		
-		//TODO do NOT accept block
+		if(stack.size() < 2){
+			throw new InvalidStackSizeException(2);
+		}
 		
 		conjunct1 = stack.pop();
 		conjunct2 = stack.pop();

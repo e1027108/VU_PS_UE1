@@ -1,13 +1,18 @@
 package Operators;
 
+import Exceptions.InvalidStackSizeException;
 import Exceptions.UnexpectedBlockException;
 
 public class Addition extends Operation{
 
 	@Override
-	public void executeOperation() throws UnexpectedBlockException {//no specific exception?
+	public void executeOperation() throws UnexpectedBlockException, InvalidStackSizeException {//no specific exception?
 		int summand1, summand2;
 		String element1, element2;
+		
+		if(stack.size() < 2){
+			throw new InvalidStackSizeException(2);
+		}
 		
 		element1 = stack.pop();
 		element2 = stack.pop();
