@@ -140,8 +140,8 @@ public class Calculator {
 							o.executeOperation();
 							break;
 						case 'w':
-							while(stack.size() > 0) {
-								outputStream = stack.pop();						
+							if(stack.size() > 0) {
+								outputStream += stack.pop() + '\n';							
 							}
 							break;
 						case 'x':
