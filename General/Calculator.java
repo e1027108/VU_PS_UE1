@@ -141,7 +141,7 @@ public class Calculator {
 							break;
 						case 'w':
 							while(stack.size() > 0) {
-								outputStream += stack.pop() + '\n';							
+								outputStream = stack.pop();						
 							}
 							break;
 						case 'x':
