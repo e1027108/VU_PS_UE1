@@ -18,8 +18,8 @@ public class Lesser extends Operation {
 		element2 = stack.pop();
 
 		try{
-			val1 = Integer.parseInt(stack.pop());
-			val2 = Integer.parseInt(stack.pop());
+			val1 = Integer.parseInt(element1);
+			val2 = Integer.parseInt(element2);
 		} catch (NumberFormatException e){
 			if(element1.contains("[")){
 				throw new UnexpectedBlockException(element1);
