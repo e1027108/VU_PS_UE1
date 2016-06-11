@@ -1,24 +1,45 @@
 package Operators;
 
 import Exceptions.InvalidStackSizeException;
+import Exceptions.UnexpectedBlockException;
+
 
 public class Copy extends Operation {
 
 	@Override
-	public void executeOperation() throws InvalidStackSizeException {
+	public void executeOperation() throws InvalidStackSizeException, UnexpectedBlockException {
+		
 		String[] elements = new String[stack.size()];
 		int origSize = stack.size();
 		
 		if(stack.size() > 1) {			
 			
-			for(int i = stack.size()-1; i >= 0; i--) {
+			for(int i = 0; i < origSize; i++) {
 				elements[i] = stack.pop();
 			}
 			
-			elements[elements.length-1] = elements[0];
+			int e = Integer.MAX_VALUE;
+			if(!elements[0].contains("[")){
+				e = Integer.parseInt(elements[0]);
+			}
+			else{
+				throw new UnexpectedBlockException("cannot copy element" + elements[0]);
+			}
 			
-			for (String element : elements){
-				stack.push(element);
+			if(e < 0){
+				throw new InvalidStackSizeException("copy cannot be applied to negative numbers");
+			}			
+						
+			if(e <= elements.length){
+				elements[0] = elements[e-1];
+				
+			}
+			else{
+				throw new InvalidStackSizeException("there is no " + elements[0] + "th element on the stack to copy");
+			}
+			
+			for(int i = 0; i < elements.length; i++) {
+				stack.push(elements[i]);
 			}			
 			
 		}

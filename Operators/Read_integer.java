@@ -13,6 +13,7 @@ public class Read_integer extends Operation {
 		String input = "";
 		boolean read = true;
 		boolean digitstart = false;
+		boolean negative = false;
 		
 		char[] buffer = new char[1];
 		
@@ -29,8 +30,15 @@ public class Read_integer extends Operation {
 					digitstart = true;
 				}
 				else{
+					if(buffer[0] == '-' && !negative && !digitstart){
+						negative = true;						
+					}
 					if(digitstart){
+						if(negative){
+							input = '-' + input;
+						}
 						stack.push(input);
+						negative = false;
 						break;
 					}
 				}
