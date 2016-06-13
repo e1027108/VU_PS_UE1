@@ -76,6 +76,8 @@ public class PrimeFactors {
 		}
 		answer = ca.getOutputStream();
 		
+		answer = answer.replaceAll("\n", " ");
+		
 		return answer;
 	}
 	

@@ -1,14 +1,19 @@
 package Operators;
 
+import Exceptions.InvalidStackSizeException;
 import Exceptions.UnexpectedBlockException;
 
 public class Multiplication extends Operation {
 
 	@Override
-	public void executeOperation() throws UnexpectedBlockException {
+	public void executeOperation() throws UnexpectedBlockException, InvalidStackSizeException {
 		int factor1, factor2;
 		String element1, element2;
 
+		if(stack.size() < 2){
+			throw new InvalidStackSizeException(2);
+		}
+		
 		element1 = stack.pop();
 		element2 = stack.pop();
 
