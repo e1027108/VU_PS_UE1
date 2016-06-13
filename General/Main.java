@@ -23,10 +23,11 @@ public class Main {
 				calc.executeInput();
 			} catch (Exception e) {
 				System.out.println(e.getClass() + ": " + e.getMessage()); //TODO: set messages in Operations
-				System.exit(0);
+				break;
 			}		
-			System.out.println("OutputStream: " + calc.getOutputStream());
+			System.out.println(calc.getOutputStream());
 			calc.clear();
+			
 		}
 		
 		
