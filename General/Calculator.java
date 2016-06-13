@@ -151,9 +151,14 @@ public class Calculator {
 					}
 				}
 			}
-			
 		}
 	}	
+	
+	public void clear(){
+		this.inputStream = "";
+		this.outputStream = "";
+		this.stack.clear();
+	}
 
 	public String getInputStream() {
 		return inputStream;
@@ -177,8 +182,6 @@ public class Calculator {
 
 	public void setStack(Deque<String> stack) {
 		this.stack = stack;
-	}
-	
-	
+	}	
 
 }
