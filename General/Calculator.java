@@ -25,15 +25,23 @@ public class Calculator {
 	public void executeInput() throws Exception{ //TODO deal with exception in Main? or here?
 		String number = "";
 		String block = "";
+		int blockopen = 0;
+		int blockclose = 0;
 		Operation o = null;
 		for(int i = 0; i < inputStream.length(); i++){
 			char c = inputStream.charAt(i);
 			
 			if(!block.equals("")){
 				block += c;
+				if(c == '['){
+					blockopen++;
+				}
 				if(c == ']'){
-					stack.push(block);
-					block = "";
+					blockclose++;
+					if(blockopen == blockclose){
+						stack.push(block);
+						block = "";
+					}
 				}
 			}
 			else {				
@@ -49,6 +57,7 @@ public class Calculator {
 						case ' ':
 							break;
 						case '[':
+							blockopen++;
 							block += c;
 							break;
 						case '+':
@@ -58,12 +67,12 @@ public class Calculator {
 							break;
 						case '-':
 							//check negative sign
-							if(i < inputStream.length()-1){
+							/*if(i < inputStream.length()-1){
 								if(Character.isDigit(inputStream.charAt(i+1))){
 									number += c;
 									break;
 								}
-							}
+							}*/
 							
 							o = operationFactory.getSubtractionInstance();
 							o.setStack(stack);
@@ -115,9 +124,18 @@ public class Calculator {
 							o.executeOperation();
 							break;
 						case 'a':
-							o = operationFactory.getApplyInstance();
+							/*o = operationFactory.getApplyInstance();
 							o.setStack(stack);
-							o.executeOperation();
+							o.executeOperation();*/
+							String b = stack.pop();
+							
+							if(b.charAt(0) == '['){
+								b = b.substring(1, b.length()-1); 
+								inputStream = inputStream.substring(0, i+1) + b + inputStream.substring(i+1);
+							}
+							else{
+								throw new InvalidStreamContentException("Block expected for apply operator");
+							}
 							break;
 						case 'b':
 							o = operationFactory.readBlockInstance();

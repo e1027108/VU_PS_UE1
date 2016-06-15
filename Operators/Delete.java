@@ -30,9 +30,9 @@ public class Delete extends Operation {
 				throw new InvalidStackSizeException("delete cannot be applied to negative numbers");
 			}
 			
-			if(e <= elements.length){
-				for(int i = 1; i < elements.length; i++) {
-					if(e-1 != i){
+			if(e < elements.length){
+				for(int i = elements.length-1; i > 0; i--) {
+					if(e != i){
 						stack.push(elements[i]);
 					}
 				}	

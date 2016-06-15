@@ -23,6 +23,7 @@ public class Main {
 				calc.executeInput();
 			} catch (Exception e) {
 				System.out.println(e.getClass() + ": " + e.getMessage()); //TODO: set messages in Operations
+				e.printStackTrace();
 				break;
 			}		
 			System.out.println(calc.getOutputStream());

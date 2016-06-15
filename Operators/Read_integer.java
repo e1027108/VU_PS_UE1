@@ -30,13 +30,13 @@ public class Read_integer extends Operation {
 					digitstart = true;
 				}
 				else{
-					if(buffer[0] == '-' && !negative && !digitstart){
+				/*	if(buffer[0] == '-' && !negative && !digitstart){
 						negative = true;						
-					}
+					}*/
 					if(digitstart){
-						if(negative){
+						/*if(negative){
 							input = '-' + input;
-						}
+						}*/
 						stack.push(input);
 						negative = false;
 						break;

@@ -30,15 +30,15 @@ public class Copy extends Operation {
 				throw new InvalidStackSizeException("copy cannot be applied to negative numbers");
 			}			
 						
-			if(e <= elements.length){
-				elements[0] = elements[e-1];
+			if(e < elements.length){
+				elements[0] = elements[e];
 				
 			}
 			else{
 				throw new InvalidStackSizeException("there is no " + elements[0] + "th element on the stack to copy");
 			}
 			
-			for(int i = 0; i < elements.length; i++) {
+			for(int i = elements.length-1; i >= 0; i--) {
 				stack.push(elements[i]);
 			}			
 			
