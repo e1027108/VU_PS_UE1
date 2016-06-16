@@ -5,17 +5,18 @@ import java.util.Scanner;
 public class PrimeFactors {
 
 	public static Calculator ca = new Calculator();
-	
+
 	public static void main(String[] args){
 
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("Welcome, I'm the prime factor calculator.");
 		System.out.println("You can shut me up by writing 'exit'.");
-		
+
 		String lastInput = "";
-		
+
 		do{
+			ca.clear();
 			System.out.println("Please input an integer for me to compute it's prime factors.");
 			if(sc.hasNext()){
 				lastInput = sc.next();
@@ -29,9 +30,9 @@ public class PrimeFactors {
 			printBye();
 			return "exit";
 		}
-		
+
 		int currentNumber;
-		
+
 		try{
 			currentNumber = Integer.parseInt(next);
 		} catch (NumberFormatException e){
@@ -39,11 +40,15 @@ public class PrimeFactors {
 			printBye();
 			return "exit";
 		}
-		
+
 		if(currentNumber == 0){
 			System.out.println("0 does not have prime factors, sorry!");
 			printBye();
 			return "exit";
+		}
+		else if(currentNumber == 1){
+			System.out.println("I couldn't find any prime factors for 1!");
+			return "";
 		}
 		else{
 			String factors = computeFactors(currentNumber);
@@ -52,8 +57,10 @@ public class PrimeFactors {
 				printBye();
 				return "exit";
 			}
-			System.out.println(computeFactors(currentNumber));
-			return "";
+			else{
+				System.out.println(factors);
+				return "";
+			}
 		}
 	}
 
@@ -64,21 +71,43 @@ public class PrimeFactors {
 	private static String computeFactors(int currentNumber) {
 		String primeInputStream = "";
 		String answer;
+
+		//1) input
+		primeInputStream += String.valueOf(currentNumber);
 		
-		// TODO how do I actually get the calculator input for that number?
-		/* call to method */
+		//2) divisor
+		primeInputStream += " 2";
 		
+		//3) block to create space
+		primeInputStream += "[]";
+		
+		//4) copy input for further use
+		primeInputStream += "3c";
+		
+		//5) copy divisor for further use
+		primeInputStream += "3c";
+		
+		//6) compute modulo
+		primeInputStream += "%";
+		
+		//7) check whether modulo is 0
+		primeInputStream += "0=w";
+		
+		//TODO adjust above steps such that prime factors are computed, also add further steps
+		//TODO for example add an iteration integer directly after divisor, then iterate it? or iterate divisor itself?
+
 		ca.setInputStream(primeInputStream);
 		try {
 			ca.executeInput();
 		} catch (Exception e) {
+			//e.printStackTrace();
 			return null;
 		}
 		answer = ca.getOutputStream();
-		
+
 		answer = answer.replaceAll("\n", " ");
-		
+
 		return answer;
 	}
-	
+
 }
