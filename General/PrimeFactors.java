@@ -51,7 +51,7 @@ public class PrimeFactors {
 			return "";
 		}
 		else if(Math.abs(currentNumber) > 100){
-			System.out.println("I am not powerful enough to tell you anything about numbers above 100");
+			System.out.println("I am not powerful enough to tell you anything about numbers above 100 (or below -100).");
 			return "";
 		}
 		else{
