@@ -90,8 +90,16 @@ public class PrimeFactors {
 		//6) compute modulo
 		primeInputStream += "%";
 		
-		//7) check whether modulo is 0
-		primeInputStream += "0=w";
+		//7) check whether modulo is greater 0
+		primeInputStream += "0>w";
+		
+		/*8) if 1 --> increase divisor, if 0 --> write quotient, how to do this?
+		 * multiply 1 by number of steps to copy sth?
+		 * multiply 0 --> copies 0 (basically doing nothing)
+		 * then 0 makes some block invalid
+		 * 1 prints quotient or sth like that
+		 * after that delete massive amounts of stuff and start again?
+		 */
 		
 		//TODO adjust above steps such that prime factors are computed, also add further steps
 		//TODO for example add an iteration integer directly after divisor, then iterate it? or iterate divisor itself?
