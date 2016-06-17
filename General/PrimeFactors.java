@@ -50,6 +50,10 @@ public class PrimeFactors {
 			System.out.println("I couldn't find any prime factors for 1!");
 			return "";
 		}
+		else if(Math.abs(currentNumber) > 100){
+			System.out.println("I am not powerful enough to tell you anything about numbers above 100");
+			return "";
+		}
 		else{
 			String factors = computeFactors(currentNumber);
 			if(factors == null){
@@ -71,9 +75,9 @@ public class PrimeFactors {
 	private static String computeFactors(int currentNumber) {
 		String primeInputStream = "";
 		String answer;
-
+		
 		//1) input
-		primeInputStream += String.valueOf(currentNumber);
+		primeInputStream += String.valueOf((int) Math.abs(currentNumber));
 		
 		//2) divisor
 		primeInputStream += " 2";
@@ -112,9 +116,13 @@ public class PrimeFactors {
 			return null;
 		}
 		answer = ca.getOutputStream();
-
+		
 		answer = answer.replaceAll("\n", " ");
 
+		if(currentNumber < 0){
+			answer = "-" + answer;
+		}
+		
 		return answer;
 	}
 
