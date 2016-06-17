@@ -46,8 +46,8 @@ public class PrimeFactors {
 			printBye();
 			return "exit";
 		}
-		else if(currentNumber == 1){
-			System.out.println("I couldn't find any prime factors for 1!");
+		else if(Math.abs(currentNumber) == 1){
+			System.out.println("I couldn't find any prime factors for " + currentNumber + "!");
 			return "";
 		}
 		else if(Math.abs(currentNumber) > 100){
