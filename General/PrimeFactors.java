@@ -50,8 +50,13 @@ public class PrimeFactors {
 			System.out.println("I couldn't find any prime factors for " + currentNumber + "!");
 			return "";
 		}
-		else if(Math.abs(currentNumber) > 100){
-			System.out.println("I am not powerful enough to tell you anything about numbers above 100 (or below -100).");
+		else if(currentNumber < 0){
+			currentNumber = Math.abs(currentNumber);
+			System.out.println("I will give you the prime factors for " + currentNumber + " instead.");
+			return printFactors(String.valueOf(currentNumber));
+		}
+		else if(currentNumber > 100){
+			System.out.println("I am not powerful enough to tell you anything about numbers above 100.");
 			return "";
 		}
 		else{
@@ -119,10 +124,6 @@ public class PrimeFactors {
 		
 		answer = answer.replaceAll("\n", " ");
 
-		if(currentNumber < 0){
-			answer = "-" + answer;
-		}
-		
 		return answer;
 	}
 
