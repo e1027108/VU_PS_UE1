@@ -2,6 +2,7 @@ package Operators;
 
 import General.Calculator;
 
+@Deprecated
 public class Apply extends Operation {
 
 	@Override
