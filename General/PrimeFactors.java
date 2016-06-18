@@ -130,8 +130,6 @@ public class PrimeFactors {
 		//3.4) divide input
 		divideBlock += "/";
 		
-		//TODO if divisor equals input/dividend, stop the program!!! otherwise there will be an infinite loop, i think
-		
 		//3.5) set divisor 2, because we start again
 		divideBlock += "2";
 		
@@ -139,10 +137,22 @@ public class PrimeFactors {
 		divideBlock += " 4d";
 		
 		//3.7) delete old divisor as we have set another one
-		divideBlock += "3d"; //TODO with triple-write program "aborts", remove when working
+		divideBlock += "3d";
 		
-		//3.8) do standard block again for new input/divisor
-		divideBlock += "5ca";
+		//3.8) block to abort ([] <=> do nothing) if we are done and to continue as usual if not
+		divideBlock += "[]6c";
+		
+		//3.9) copy dividend
+		divideBlock += "4c";
+		
+		//3.10) check whether dividend is 1
+		divideBlock += " 1=";
+		
+		//3.11) delete first block standard, when dividend is 1, otw delete []
+		divideBlock += " 2-d";
+		
+		//3.12) apply the specified block
+		divideBlock += "a";
 		
 		/*-------------------------------------------------------
 		 *main program 

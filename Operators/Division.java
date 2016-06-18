@@ -36,6 +36,7 @@ public class Division extends Operation {
 			throw new ArithmeticException("Division by 0 not allowed!");
 		}
 
+		//System.out.println("" + element2 + "/" + element1 + "=" + dividend/divisor);
 		stack.push(String.valueOf(dividend/divisor));
 
 	}
