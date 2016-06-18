@@ -101,21 +101,21 @@ public class PrimeFactors {
 		//1.4) check whether modulo is greater 0
 		standardBlock += "0>";
 		
-		//1.5) if greater -> 1 copies block 2, if not block 3 TODO these are currently blocks 1 and 2
+		//1.5) if greater -> 1 copies block 2, if not block 3
 		standardBlock += "3+c";
 		
 		//1.6) execute copied block
 		standardBlock += "a";
 		
 		//-----
-		//2.1) increment divisor block
+		//2.1) increment the divisor
 		increaseBlock += "1+";
 		
 		//2.1.1) testing
-		increaseBlock += "1cw";
+		//increaseBlock += "1cw";
 		
 		//2.2) do standard block again for input and new divisor
-		increaseBlock += "[" + standardBlock + "]a";		
+		increaseBlock += "5ca";
 		
 		//-----
 		//3.1) print divisor
@@ -139,10 +139,10 @@ public class PrimeFactors {
 		divideBlock += " 4d";
 		
 		//3.7) delete old divisor as we have set another one
-		divideBlock += "3dwww"; //TODO with triple-write program "aborts", remove when working
+		divideBlock += "3d"; //TODO with triple-write program "aborts", remove when working
 		
 		//3.8) do standard block again for new input/divisor
-		//divideBlock += "[" + standardBlock + "]a"; //TODO de-comment when working
+		divideBlock += "5ca";
 		
 		/*-------------------------------------------------------
 		 *main program 
