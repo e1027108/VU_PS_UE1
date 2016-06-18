@@ -55,8 +55,8 @@ public class PrimeFactors {
 			System.out.println("I will give you the prime factors for " + currentNumber + " instead.");
 			return printFactors(String.valueOf(currentNumber));
 		}
-		else if(currentNumber > 100){
-			System.out.println("I am not powerful enough to tell you anything about numbers above 100.");
+		else if(currentNumber > 10000){ //7919 is prime and takes ~2s on my system
+			System.out.println("I am not powerful enough to tell you anything about numbers above 10000.");
 			return "";
 		}
 		else{
