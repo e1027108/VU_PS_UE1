@@ -79,47 +79,97 @@ public class PrimeFactors {
 
 	private static String computeFactors(int currentNumber) {
 		String primeInputStream = "";
+		String standardBlock = "";
+		String increaseBlock = "";
+		String divideBlock = "";
 		String answer;
 		
-		//for testing purposes last command should write 'w'
+		/*-------------------------------------------------------
+		 *definition of standard, increase and divide blocks
+		 *--------------------------------------------------------*/
 		
-		//1) input
+		//1) huge block to compute modulo
+		//1.1) copy input for further use
+		standardBlock += " 2c";
+		
+		//1.2) copy divisor for further use
+		standardBlock += " 2c";
+		
+		//1.3) compute modulo
+		standardBlock += "%";
+		
+		//1.4) check whether modulo is greater 0
+		standardBlock += "0>";
+		
+		//1.5) if greater -> 1 copies block 2, if not block 3 TODO these are currently blocks 1 and 2
+		standardBlock += "3+c";
+		
+		//1.6) execute copied block
+		standardBlock += "a";
+		
+		//-----
+		//2.1) increment divisor block
+		increaseBlock += "1+";
+		
+		//2.1.1) testing
+		increaseBlock += "1cw";
+		
+		//2.2) do standard block again for input and new divisor
+		increaseBlock += "[" + standardBlock + "]a";		
+		
+		//-----
+		//3.1) print divisor
+		divideBlock += " 1cw";
+		
+		//3.2) copy input
+		divideBlock += " 2c";
+		
+		//3.3) copy divisor
+		divideBlock += " 2c";
+		
+		//3.4) divide input
+		divideBlock += "/";
+		
+		//TODO if divisor equals input/dividend, stop the program!!! otherwise there will be an infinite loop, i think
+		
+		//3.5) set divisor 2, because we start again
+		divideBlock += "2";
+		
+		//3.6) delete old input, now we work with rest value
+		divideBlock += " 4d";
+		
+		//3.7) delete old divisor as we have set another one
+		divideBlock += "3dwww"; //TODO with triple-write program "aborts", remove when working
+		
+		//3.8) do standard block again for new input/divisor
+		//divideBlock += "[" + standardBlock + "]a"; //TODO de-comment when working
+		
+		/*-------------------------------------------------------
+		 *main program 
+		 *for testing purposes last command should write 'w'
+		 *--------------------------------------------------------*/
+		
+		//0) standard block to compute modulo and the such
+		primeInputStream += "[" + standardBlock + "]";
+		
+		//1) block for modulo > 0
+		primeInputStream += "[" + increaseBlock + "]";
+		
+		//2) block for modulo = 0
+		primeInputStream += "[" + divideBlock + "]";
+		
+		//3) input
 		primeInputStream += String.valueOf((int) Math.abs(currentNumber));
 		
-		//2) divisor
+		//4) divisor
 		primeInputStream += " 2";
 		
-		//3) block for modulo > 0
-		primeInputStream += "[a]";
+		//5) copy and execute standard block
+		primeInputStream += " 5ca";
 		
-		//4) block for modulo = 0
-		primeInputStream += "[b]";
-		
-		//4) copy input for further use
-		primeInputStream += "4c";
-		
-		//5) copy divisor for further use
-		primeInputStream += "4c";
-		
-		//6) compute modulo
-		primeInputStream += "%";
-		
-		//7) check whether modulo is greater 0
-		primeInputStream += "0>";
-		
-		//8) if greater -> 1 copies block 1, if not block 2
-		primeInputStream += "1+cw";
-		
-		/*further: if 1 --> increase divisor, if 0 --> write quotient, how to do this?
-		 * multiply 1 by number of steps to copy sth?
-		 * multiply 0 --> copies 0 (basically doing nothing)
-		 * then 0 makes some block invalid
-		 * 1 prints quotient or sth like that
-		 * after that delete massive amounts of stuff and start again?
-		 */
-		
-		//TODO adjust above steps such that prime factors are computed, also add further steps
-		//TODO for example add an iteration integer directly after divisor, then iterate it? or iterate divisor itself?
+		/*-------------------------------------------------------
+		 *end
+		 *--------------------------------------------------------*/
 
 		ca.setInputStream(primeInputStream);
 		try {
