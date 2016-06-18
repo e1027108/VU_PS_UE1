@@ -81,28 +81,36 @@ public class PrimeFactors {
 		String primeInputStream = "";
 		String answer;
 		
+		//for testing purposes last command should write 'w'
+		
 		//1) input
 		primeInputStream += String.valueOf((int) Math.abs(currentNumber));
 		
 		//2) divisor
 		primeInputStream += " 2";
 		
-		//3) block to create space
-		primeInputStream += "[]";
+		//3) block for modulo > 0
+		primeInputStream += "[a]";
+		
+		//4) block for modulo = 0
+		primeInputStream += "[b]";
 		
 		//4) copy input for further use
-		primeInputStream += "3c";
+		primeInputStream += "4c";
 		
 		//5) copy divisor for further use
-		primeInputStream += "3c";
+		primeInputStream += "4c";
 		
 		//6) compute modulo
 		primeInputStream += "%";
 		
 		//7) check whether modulo is greater 0
-		primeInputStream += "0>w";
+		primeInputStream += "0>";
 		
-		/*8) if 1 --> increase divisor, if 0 --> write quotient, how to do this?
+		//8) if greater -> 1 copies block 1, if not block 2
+		primeInputStream += "1+cw";
+		
+		/*further: if 1 --> increase divisor, if 0 --> write quotient, how to do this?
 		 * multiply 1 by number of steps to copy sth?
 		 * multiply 0 --> copies 0 (basically doing nothing)
 		 * then 0 makes some block invalid
